@@ -1,0 +1,17 @@
+# dsh-vercel-agent-browser: expose Vercel agent-browser to DeepSeek Harness over MCP.
+# The server runs via `npx -y agent-browser@0.42.0` — pinned on purpose: this is the
+# version audited before publishing this plugin. Upgrade by changing this line and
+# bumping the plugin version. First start downloads via npx (30-60s), then it is
+# cached and starts in ~1s.
+- insert:
+    - id: mcp-vercel-agent-browser
+      name: "@deepseek-ai/dsh-mcp-client"
+      config:
+        serverName: vercel-agent-browser
+        transport: stdio
+        command: npx
+        args: ["-y", "agent-browser@0.42.0", "mcp", "--tools", "core,mobile"]
+        env:
+          AGENT_BROWSER_SOCKET_DIR: /tmp/dsh-agent-browser
+        toolCallTimeoutMs: 120000
+        failOnStartupError: false

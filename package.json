@@ -1,0 +1,28 @@
+{
+  "name": "dsh-vercel-agent-browser",
+  "version": "0.1.0",
+  "description": "Connect Vercel agent-browser to DeepSeek Harness via MCP.",
+  "type": "commonjs",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaoyuqinA/dsh-vercel-agent-browser.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "files": [
+    "cordis.patch.yml"
+  ],
+  "keywords": ["dsh-plugin", "deepseek-harness", "agent-browser", "mcp"],
+  "engines": {
+    "dsh": "^0.2.2-rc.1",
+    "node": ">=22"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
